@@ -6,7 +6,7 @@ interface Job {
   role:      string
   company:   string
   desc:      React.ReactNode
-  cta?:      { label: string; href: string }
+  ctas?:     { label: string; href: string; primary?: boolean }[]
 }
 
 const jobs: Job[] = [
@@ -16,14 +16,14 @@ const jobs: Job[] = [
     role:      'Full Stack Developer',
     company:   'Grupo Matmap, S.L.',
     desc: (
-  <>
-    Responsable técnica única de <strong>7 tiendas e-commerce en producción</strong>.
-    Desarrollo de <strong>plugins PHP y JS a medida</strong>, integración de pasarelas
-    de pago, automatización de procesos internos, distribución y mantenimiento de
-    plugins en producción, <strong>migración de base de datos</strong>, SEO técnico,
-    <strong>optimización de rendimiento</strong> y desarrollo de interfaces de usuario.
-  </>
-),
+      <>
+        Responsable técnica única de <strong>7 tiendas e-commerce en producción</strong>.
+        Desarrollo de <strong>plugins PHP y JS a medida</strong>, integración de pasarelas
+        de pago, automatización de procesos internos, distribución y mantenimiento de
+        plugins en producción, <strong>migración de base de datos</strong>, SEO técnico,
+        <strong>optimización de rendimiento</strong> y desarrollo de interfaces de usuario.
+      </>
+    ),
   },
   {
     dateStart: '2023',
@@ -32,14 +32,16 @@ const jobs: Job[] = [
     company:   'Proyectos independientes',
     desc: (
       <>
-        Restaurantes
-        <br />
-        Invitaciones digitales de boda 
-        <br />
-        PWA personalizados
+        Restaurantes<br />
+        Invitaciones digitales de boda <br />
+PWA personalizados 
+
       </>
     ),
-    cta: { label: 'Ver proyectos →', href: '#proyectos' },
+    ctas: [
+      { label: 'Ver proyectos →', href: '#', primary: true },
+      { label: 'Catálogo',        href: '#' },
+    ],
   },
 ]
 
@@ -68,10 +70,18 @@ export default function Experience() {
                 <p className={styles.role}>{job.role}</p>
                 <p className={styles.company}>{job.company}</p>
                 <p className={styles.desc}>{job.desc}</p>
-                {job.cta && (
-                  <a href={job.cta.href} className={styles.cta}>
-                    {job.cta.label}
-                  </a>
+                {job.ctas && (
+                  <div className={styles.ctas}>
+                    {job.ctas.map(cta => (
+                      <a
+                        key={cta.label}
+                        href={cta.href}
+                        className={cta.primary ? styles.btnPrimary : styles.btnGhost}
+                      >
+                        {cta.label}
+                      </a>
+                    ))}
+                  </div>
                 )}
               </div>
 

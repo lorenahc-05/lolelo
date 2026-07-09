@@ -11,9 +11,9 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name:   'Visual Voices',
-    tags:   ['Angular 18', 'Node.js', 'MongoDB', 'TypeScript', 'Three.js'],
-    desc:   'Plataforma de aprendizaje de Lengua de Signos Española. TFG con notable. Sistema de lecciones interactivo con seguimiento de progreso y visualizaciones 3D.',
+    name:   'Visual Voices ',
+    tags:   ['Angular 18', 'Node.js', 'MongoDB', 'TypeScript', 'Three.js/WebGL', 'Blender'],
+    desc:   'Plataforma de aprendizaje de Lengua de Signos Española, con un avatar 3D que signa en tiempo real. Estructurada en módulos progresivos, incorpora un motor procedural que genera frases dinámicamente combinando plantillas estructurales, un sistema de progreso adaptado al usuario y una simulación de conversación para practicar en contexto.',
     demo:   'https://visual-voices.vercel.app',
     repo:   'https://github.com/lolelo/visual-voices',
     accent: 'magenta',
@@ -32,7 +32,7 @@ export default function Projects() {
   return (
     <section className={styles.section} id="proyectos" aria-label="Proyectos">
       <div className={styles.inner}>
-        <h2 className={styles.sectionTitle}>Proyectos</h2>
+        <h2 className={styles.sectionTitle}>Proyectos destacados</h2>
 
         <ul className={styles.list} role="list">
           {projects.map(p => (
