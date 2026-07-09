@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion, useMotionValue, useAnimate } from 'framer-motion'
 import styles from './Hero.module.css'
 
@@ -21,7 +21,14 @@ export default function Hero() {
   const [scope, animate] = useAnimate()
   const y = useMotionValue(0)
 
-  // Posiciona el contenedor de letras al tamaño y posición exactos del recorrido
+  // Estado de cada brick: clave "ri-si" → true si está roto
+  const [broken, setBroken] = useState<Record<string, boolean>>({})
+
+  const toggleBrick = (key: string) => {
+    setBroken(prev => ({ ...prev, [key]: !prev[key] }))
+  }
+
+  // Posiciona el contenedor de letras
   useEffect(() => {
     const setup = () => {
       if (!lettersRef.current || !leftRef.current || !scope.current) return
@@ -29,33 +36,28 @@ export default function Hero() {
       const solapaRect = scope.current.getBoundingClientRect()
       const solapaH    = solapaRect.height
       const solapaW    = solapaRect.width
-      // El recorrido va desde top:0 hasta leftRect.height - solapaH
       const travel = leftRect.height - solapaH
-      // X centrado en la solapa: la solapa está left:-90px, width:86px
       lettersRef.current.style.top    = '0px'
       lettersRef.current.style.height = `${travel}px`
       lettersRef.current.style.width  = `${solapaW}px`
       lettersRef.current.style.left   = `-${solapaW + 4}px`
     }
-    // Setup inicial con un pequeño delay para que el DOM esté listo
     setTimeout(setup, 50)
     window.addEventListener('resize', setup)
     return () => window.removeEventListener('resize', setup)
   }, [scope])
 
-  // Actualiza el clip según la posición Y de la solapa
+  // Clip según posición Y de la solapa
   useEffect(() => {
     const unsub = y.on('change', () => {
       if (!lettersRef.current || !leftRef.current || !scope.current) return
       const leftRect   = leftRef.current.getBoundingClientRect()
       const solapaRect = scope.current.getBoundingClientRect()
       const solapaH    = solapaRect.height
-      // Top de la solapa relativo al .left
-      const solapaTop = solapaRect.top - leftRect.top
-      // Revela desde arriba hasta el top de la solapa
-      const revealed = Math.max(0, solapaTop)
-      const travel   = leftRect.height - solapaH
-      const hidden   = Math.max(0, travel - revealed)
+      const solapaTop  = solapaRect.top - leftRect.top
+      const revealed   = Math.max(0, solapaTop)
+      const travel     = leftRect.height - solapaH
+      const hidden     = Math.max(0, travel - revealed)
       lettersRef.current.style.clipPath = `inset(0 0 ${hidden}px 0)`
     })
     return () => unsub()
@@ -127,20 +129,31 @@ export default function Hero() {
         </div>
 
         <div className={styles.right} aria-hidden="true">
+          {/* Fondo con HIRE ME — se ve conforme desaparecen los bricks */}
+          <div className={styles.hireMeBack}>
+            <span>HIRE</span>
+            <span>ME</span>
+          </div>
+
           {rows.map((row, ri) => (
             <div
               key={ri}
               className={`${styles.brow} ${ri % 2 === 0 ? styles.browOffset : ''}`}
             >
-              {row.map((skill, si) => (
-                <div
-                  key={si}
-                  className={styles.brick}
-                  style={{ flex: skill.length }}
-                >
-                  {skill}
-                </div>
-              ))}
+              {row.map((skill, si) => {
+                const key = `${ri}-${si}`
+                const isBroken = broken[key]
+                return (
+                  <div
+                    key={si}
+                    className={`${styles.brick} ${isBroken ? styles.brickBroken : ''}`}
+                    style={{ flex: skill.length }}
+                    onClick={() => toggleBrick(key)}
+                  >
+                    {!isBroken && skill}
+                  </div>
+                )
+              })}
             </div>
           ))}
         </div>

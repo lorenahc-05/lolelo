@@ -6,36 +6,40 @@ interface Job {
   role:      string
   company:   string
   desc:      React.ReactNode
+  cta?:      { label: string; href: string }
 }
 
 const jobs: Job[] = [
   {
-    dateStart: 'Jul 2026',
+    dateStart: 'Nov 2025',
     dateEnd:   'Actualidad',
-    role:      'Frontend Developer',
-    company:   'Grupo Matmap · Fundeun',
+    role:      'Full Stack Developer',
+    company:   'Grupo Matmap, S.L.',
     desc: (
-      <>
-        Único perfil técnico de la empresa. Desarrollo y mantenimiento de{' '}
-        <strong>plugins PHP y JavaScript propios</strong> sobre WooCommerce en 7 tiendas
-        en producción. Integración de pasarela Redsys, automatización con Google Sheets
-        y arquitectura de actualización remota de plugins.
-      </>
-    ),
+  <>
+    Responsable técnica única de <strong>7 tiendas e-commerce en producción</strong>.
+    Desarrollo de <strong>plugins PHP y JS a medida</strong>, integración de pasarelas
+    de pago, automatización de procesos internos, distribución y mantenimiento de
+    plugins en producción, <strong>migración de base de datos</strong>, SEO técnico,
+    <strong>optimización de rendimiento</strong> y desarrollo de interfaces de usuario.
+  </>
+),
   },
   {
-    dateStart: 'Nov 2024',
-    dateEnd:   'Jun 2026',
-    role:      'Frontend Developer (prácticas)',
-    company:   'Grupo Matmap · GIPE UA',
+    dateStart: '2023',
+    dateEnd:   'Actualidad',
+    role:      'Web Developer',
+    company:   'Proyectos independientes',
     desc: (
       <>
-        Prácticas universitarias que se convirtieron en trabajo real desde el primer mes.{' '}
-        <strong>Migración de 7 tiendas a HPOS</strong>, optimización de rendimiento web,
-        consolidación de dominios con estrategia SEO 301 y desarrollo del plugin
-        mm-smart-cart desde cero.
+        Restaurantes
+        <br />
+        Invitaciones digitales de boda 
+        <br />
+        PWA personalizados
       </>
     ),
+    cta: { label: 'Ver proyectos →', href: '#proyectos' },
   },
 ]
 
@@ -64,6 +68,11 @@ export default function Experience() {
                 <p className={styles.role}>{job.role}</p>
                 <p className={styles.company}>{job.company}</p>
                 <p className={styles.desc}>{job.desc}</p>
+                {job.cta && (
+                  <a href={job.cta.href} className={styles.cta}>
+                    {job.cta.label}
+                  </a>
+                )}
               </div>
 
             </div>
