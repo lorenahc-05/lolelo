@@ -1,0 +1,28 @@
+.page {
+  border: 2px solid var(--black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+.minimal {
+  background: var(--parchment);
+}
+
+/* Divider centrado igual que el contenido */
+.divider {
+  border: none;
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  max-width: 700px;
+  margin: 72px auto 0;
+  padding: 0 24px;
+  /* el margen top coincide con el padding-top de cada sección */
+}
+
+@media (max-width: 600px) {
+  .divider { margin: 56px auto 0; padding: 0 20px; }
+}

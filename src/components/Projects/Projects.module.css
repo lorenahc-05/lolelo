@@ -1,0 +1,134 @@
+.section {
+  padding: 72px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 24px;
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionTitle::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--magenta);
+  flex-shrink: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  list-style: none;
+}
+
+.thumb {
+  width: 100%;
+  height: 200px;
+  background: var(--black);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.thumb-magenta::after { background: var(--magenta); }
+.thumb-gold::after    { background: var(--gold); }
+
+.thumbLabel {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(245, 240, 235, 0.18);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(10, 10, 10, 0.45);
+  background: rgba(10, 10, 10, 0.05);
+  padding: 3px 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.desc {
+  font-size: 16px;
+  color: rgba(10, 10, 10, 0.6);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--black);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.link-magenta { border-bottom-color: var(--magenta); }
+.link-magenta:hover { color: var(--magenta); }
+
+.link-gold { border-bottom-color: var(--gold); }
+.link-gold:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .section { padding: 56px 0 0; }
+  .inner { padding: 0 20px; }
+  .thumb { height: 160px; }
+}

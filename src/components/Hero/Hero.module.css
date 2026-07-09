@@ -1,0 +1,252 @@
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 48px 24px 64px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  position: relative;
+}
+
+.inner {
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  border: 2px solid var(--black);
+ 
+  position: relative;
+  overflow: visible;
+}
+
+.sticker {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  background: #99e89d;
+  color: var(--black);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transform: rotate(15deg);
+  white-space: nowrap;
+  z-index: 10;
+  animation: stickerPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes stickerPulse {
+  0%, 100% { box-shadow: 2px 2px 0 rgba(0,0,0,0.2), 0 0 0 0 rgba(153,232,157,0.5); }
+  50%       { box-shadow: 2px 2px 0 rgba(0,0,0,0.2), 0 0 0 8px rgba(153,232,157,0); }
+}
+
+.left {
+  padding: 40px 32px;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -1.5px;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+
+.surname {
+  font-style: normal;
+  display: block;
+  color: var(--magenta);
+}
+
+.tagline {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(10, 10, 10, 0.6);
+}
+
+.ctas {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background: var(--magenta);
+  color: var(--parchment);
+  border: 2px solid var(--magenta);
+  padding: 10px 22px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btnPrimary:hover { background: var(--black); border-color: var(--black); }
+
+.btnGhost {
+  display: inline-block;
+  background: transparent;
+  color: var(--black);
+  border: 2px solid var(--black);
+  padding: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+
+.btnGhost:hover { background: rgba(10, 10, 10, 0.06); }
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px;
+  background: var(--parchment);
+  align-self: stretch;
+  overflow: visible;
+}
+
+.brow {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  flex: 1;
+}
+
+.browOffset {
+  margin-left: -14px;
+  width: calc(100% + 14px);
+}
+
+.brick {
+  background: var(--black);
+  color: var(--parchment);
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: background 0.15s;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brick:hover { background: var(--magenta); }
+
+/* ── Solapa ───────────────────────────────────────────── */
+.solapa {
+  cursor: grab;
+  position: absolute;
+  left: -90px;
+  top: 16px;
+  transform: none;
+  width: 86px;
+  background: var(--parchment);
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  border-left: 2px solid var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 10px;
+  z-index: 0;
+}
+
+.solapaAvatar {
+  width: 56px;
+  height: 56px;
+  border: 2.5px solid var(--gold);
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.solapaLabel {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(10, 10, 10, 0.35);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .section { padding: 32px 20px 48px; }
+  .inner   { grid-template-columns: 1fr; border-right: none; }
+  .left    { border-right: none; border-bottom: 2px solid var(--black); }
+  .right   { height: 120px; }
+  .sticker { right: -20px; top: 16px; font-size: 9px; padding: 6px 12px; }
+  .solapa  { display: none; }
+}
+
+/* ── Hire Me — letras reveladas por la solapa ────────── */
+.hireMe {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  clip-path: inset(0 0 100% 0);
+}
+
+.hireLetter {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(184, 164, 0, 0.6);
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+.hireLetter:nth-child(4) {
+  margin-bottom: 18px;
+}

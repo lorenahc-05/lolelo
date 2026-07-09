@@ -1,0 +1,141 @@
+.section {
+  padding: 72px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 24px;
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionTitle::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--magenta);
+  flex-shrink: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 0 8px;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr 16px;
+  gap: 0 6px;
+  padding-bottom: 44px;
+}
+
+.item:last-child .timeline {
+  padding-bottom: 0;
+}
+
+.dates {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 3px;
+  text-align: right;
+}
+
+.dates span {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgba(10, 10, 10, 0.663);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.lineCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--magenta);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  background: rgba(212, 0, 110, 0.2);
+  margin-top: 6px;
+}
+
+.content {
+  padding-bottom: 44px;
+}
+
+.item:last-child .content {
+  padding-bottom: 0;
+}
+
+.role {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin-bottom: 3px;
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--magenta);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 16px;
+  color: rgba(10, 10, 10, 0.6);
+  line-height: 1.75;
+}
+
+.desc strong {
+  color: var(--black);
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .section { padding: 56px 0 0; }
+  .inner { padding: 0 20px; }
+  .item { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: auto 16px; padding-bottom: 6px; }
+  .dates { text-align: left; flex-direction: row; gap: 4px; }
+  .dates span:first-child::after { content: ' –'; }
+  .line { display: none; }
+  .content { padding-bottom: 36px; }
+}
