@@ -17,10 +17,7 @@ export default function About() {
             <strong>7 tiendas activas, plugins propios, integraciones con pasarelas
             de pago</strong>.
           </p>
-          <p>
-            Fuera del trabajo hago videomapping, pinto cerámica y construyo apps
-            para resolver problemas de gente real.
-          </p>
+          
         </div>
         <div className={styles.avatar} aria-hidden="true">LH</div>
       </div>
