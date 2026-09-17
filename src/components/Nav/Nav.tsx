@@ -34,7 +34,12 @@ export default function Nav() {
       <ul className={styles.links} role="list">
         {sections.map(s => (
           <li key={s}>
-            <a href={`#${s.replace(' ', '-')}`} className={styles.link}>{s}</a>
+            <a
+              href={s === 'proyectos' ? '/proyectos' : `#${s.replace(' ', '-')}`}
+              className={styles.link}
+            >
+              {s}
+            </a>
           </li>
         ))}
       </ul>
