@@ -118,7 +118,7 @@ export default function Hero() {
           <div className={styles.ctas}>
             <a href="/proyectos" className={styles.btnPrimary}>Ver proyectos →</a>
             <a
-              href="https://github.com/lolelo"
+              href="https://github.com/lorenahc-05"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnGhost}

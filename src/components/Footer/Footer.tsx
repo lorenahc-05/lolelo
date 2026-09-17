@@ -1,8 +1,8 @@
 import styles from './Footer.module.css'
 
 const links = [
-  { label: 'GitHub',   href: 'https://github.com/lolelo' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/lolelo' },
+  { label: 'GitHub',   href: 'https://github.com/lorenahc-05' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lorena-heras-caballero-22304b388' },
   { label: 'lorenahc123@gmail.com', href: 'mailto:lorenahc123@gmail.com' },
 ]
 
