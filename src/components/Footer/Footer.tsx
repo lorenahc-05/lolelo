@@ -3,7 +3,7 @@ import styles from './Footer.module.css'
 const links = [
   { label: 'GitHub',   href: 'https://github.com/lolelo' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/lolelo' },
-  { label: 'lorena@lolelo.dev', href: 'mailto:lorena@lolelo.dev' },
+  { label: 'lorenahc123@gmail.com', href: 'mailto:lorenahc123@gmail.com' },
 ]
 
 export default function Footer() {
